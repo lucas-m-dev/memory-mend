@@ -1,15 +1,30 @@
 # MemoryMend - Google Takeout Metadata Fixer
 
-MemoryMend is a standalone Python utility designed to automatically fix media metadata issues caused by Google Takeout exports. It normalizes broken or truncated JSON sidecar filenames, pairs them with their corresponding images or videos, applies original creation timestamps via ExifTool in bulk, and cleanly organizes the workspace.
+MemoryMend is a simple tool designed to fix the date and time of your photos and videos after exporting them via Google Takeout. When you download your data, Google separates the original timestamps from your files, causing your media to display incorrect dates. This script automatically reads the original dates and restores them to your files, while keeping your folders clean and organized.
+
+Please note: This tool specifically restores the **date and time** metadata. It does not alter or restore other metadata, such as GPS locations or camera details.
 
 > Disclaimer: This project is for educational and personal data recovery purposes only. Always make a backup copy of your media folders before running the script.
+
+## Quick Start: Installation and Usage
+
+There is no complex installation required. Follow these steps to fix your media dates:
+
+1. Download the standalone ExifTool executable from the [Official ExifTool Website](https://exiftool.org/).
+2. Unzip your Google Takeout archive on your computer. Inside, locate the main folder containing your media, typically named `Google Photos`.
+3. Move the following items directly inside that `Google Photos` folder:
+   - The `memorymend.py` script.
+   - The `exiftool.exe` file.
+   - The `exiftool_files` directory (required for Windows users, included in the ExifTool download).
+4. Double-click the `memorymend.py` script to run it.
+5. A terminal window will open. Simply follow the on-screen prompts and press `Enter` when requested to move through the phases until completed.
+
+---
 
 ## Table of Contents
 - What Is It?
 - How It Works?
 - Prerequisites
-- Installation and Setup
-- Usage
 - Example Output
 - Contributing
 - License
@@ -18,7 +33,7 @@ MemoryMend is a standalone Python utility designed to automatically fix media me
 ## What Is It?
 When exporting photos and videos from Google Photos via Google Takeout, the original "Date Taken" metadata is often stripped from the media files and stored in separate `.json` sidecar files. To make matters worse, Google randomly alters or truncates these JSON filenames (e.g., creating variations like `image(1).jpg` paired with `image.jpg(1).json` or appending truncated strings like `.supplemental-metada.json`).
 
-MemoryMend solves this chaos natively. It scans your directories, uses an advanced Universal Regex to normalize anomalous JSON names so they perfectly match their media counterparts, reads the original Unix timestamp, and uses ExifTool to inject the dates back into your files in a single mass execution block. 
+MemoryMend solves this chaos behind the scenes. It scans your directories, uses an advanced Universal Regex to normalize anomalous JSON names so they perfectly match their media counterparts, reads the original Unix timestamp, and uses ExifTool to inject the correct dates back into your files in a single mass execution block. 
 
 Once updated, it automatically purges the used JSON files and isolates any unpairable files into dedicated folders, leaving your directories completely clean.
 
@@ -35,18 +50,8 @@ The script executes in four distinct, interactive phases:
 - ExifTool (by Phil Harvey) executable placed in the same directory as the script.
   - Windows users: Ensure both `exiftool.exe` and the `exiftool_files` folder are in the root directory.
 
-## Installation and Setup
-There is no complex installation required.
-
-1. Download `memorymend.py` and place it in the root folder containing your unzipped Google Takeout media directories.
-2. Download the standalone ExifTool executable from the official source.
-3. Place `exiftool.exe` (or the Unix equivalent) in the exact same folder as `memorymend.py`.
-
-## Usage
-Simply execute the script by double-click it:
-
 ## Example Output
-```
+```text
 ===================================================
       MemoryMend - Google Takeout Metadata Fixer   
 ===================================================
@@ -110,8 +115,7 @@ Press Enter to exit...
 
 
 ## Contributing
-Pull requests are welcome. 
-Feel free to open issues for suggestions, bug reports, or performance improvements to help optimize the processing workflow.
+Pull requests are welcome. Feel free to open issues for suggestions, bug reports, or performance improvements to help optimize the processing workflow.
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
