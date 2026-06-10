@@ -2,7 +2,7 @@
 
 MemoryMend is a standalone Python utility designed to automatically fix media metadata issues caused by Google Takeout exports. It normalizes broken or truncated JSON sidecar filenames, pairs them with their corresponding images or videos, applies original creation timestamps via ExifTool in bulk, and cleanly organizes the workspace.
 
-Disclaimer: This project is for educational and personal data recovery purposes only. Always make a backup copy of your media folders before running the script.
+> Disclaimer: This project is for educational and personal data recovery purposes only. Always make a backup copy of your media folders before running the script.
 
 ## Table of Contents
 - What Is It?
